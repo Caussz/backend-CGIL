@@ -4,7 +4,8 @@ const express = require("express");
 const app = express.Router(); // start das rotas
 
 let url = 'https://sig.ifc.edu.br/sigaa/verTelaLogin.do'
-
+// Segue o exemplo de como ficaria a url:
+// --> http://localhost:3000/api/sigaa?user=SeuUsuario&pass=SuaSenha
 app.get('/sigaa', async (req, res) => {
     const user = req.query.user
     const pass = req.query.pass
