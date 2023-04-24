@@ -15,6 +15,6 @@ app.use('/api', mainrouter); // rota das apis
 
 app.listen(process.env.PORT || port, () => { 
     console.clear();
-    console.log(`Seu site de apis esta rodando na porta: ${port}`.susa);
+    console.log(`Seu site de apis esta rodando na porta: ${port}`.atencao);
     console.log(`~~~>>> localhost:${port}`.info);
   })
