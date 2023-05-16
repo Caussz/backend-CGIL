@@ -4,7 +4,8 @@ const aluno = {
     situacao: "",
     matricula: "",
     ano: "",
-    totalFalta: 0
+    totalFalta: 0,
+    printBoletim: ''
   };
 
 module.exports = aluno

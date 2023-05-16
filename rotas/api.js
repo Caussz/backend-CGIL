@@ -7,6 +7,8 @@ const app = express.Router(); // start das rotas
 // importacao dos objetos
 const aluno = require('../src/utils/alunoInfo')
 const nota = require('../src/utils/alunoNota')
+// importacao da função para tranformar a imagem em link
+const TelegraPh = require('../src/utils/telegraph')
 
 // defs das urls necessarias
 const URL_LOGIN = "https://sig.ifc.edu.br/sigaa/mobile/touch/login.jsf";
@@ -118,8 +120,10 @@ app.get("/sigaa", async (req, res) => {
              break;
         }
       });
+      // Transformar imagem em link
+      await TelegraPh('./src/image/boletim.jpg').then(async (result) => aluno.printBoletim = result)
       // Retorna o resultado da consulta em formato JSON
-      res.json({ aluno, nota });
+     res.json({ aluno, nota });
     }, 6000);
   
 });
