@@ -29,7 +29,7 @@ app.get("/sigaa", async (req, res) => {
     return;
   } 
   // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     const pages = await browser.pages();
     await page.goto(URL_LOGIN, {
