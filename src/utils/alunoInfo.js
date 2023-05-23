@@ -5,7 +5,8 @@ const aluno = {
     matricula: "",
     ano: "",
     totalFalta: 0,
-    printBoletim: ''
+    printBoletim: '',
+    numeroTel: '554792091566@c.us'
   };
 
 module.exports = aluno

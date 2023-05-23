@@ -3,13 +3,15 @@ const cheerio = require(`cheerio`);
 const puppeteer = require(`puppeteer`);
 const express = require("express");
 const app = express.Router(); // start das rotas
+const fs = require('fs');
 
 // importacao dos objetos
 const aluno = require('../src/utils/alunoInfo')
 const nota = require('../src/utils/alunoNota')
+const alunoNota = JSON.parse(fs.readFileSync('./src/utils/alunoTotal.json'))
+const alunoCreds = JSON.parse(fs.readFileSync('./src/utils/alunoCreds.json'))
 // importacao da função para tranformar a imagem em link
 const TelegraPh = require('../src/utils/telegraph')
-
 // defs das urls necessarias
 const URL_LOGIN = "https://sig.ifc.edu.br/sigaa/mobile/touch/login.jsf";
 const URL_MENU = "https://sig.ifc.edu.br/sigaa/mobile/touch/menu.jsf";
@@ -28,8 +30,16 @@ app.get("/sigaa", async (req, res) => {
     });
     return;
   } 
+
+  if(fs.existsSync('./src/utils/alunoLogin.json')){
+    // verifica se o arquivo alunoLogin.json existe
+    res.json({alunoCreds, alunoNota})
+  } else {
+
+  
+
   // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     const pages = await browser.pages();
     await page.goto(URL_LOGIN, {
@@ -123,8 +133,13 @@ app.get("/sigaa", async (req, res) => {
       // Transformar imagem em link
       await TelegraPh('./src/image/boletim.jpg').then(async (result) => aluno.printBoletim = result)
       // Retorna o resultado da consulta em formato JSON
-     res.json({ aluno, nota });
-    }, 6000);
+      await fs.writeFileSync('./src/utils/alunoTotal.json', JSON.stringify(nota))
+      await fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(aluno))
+      await fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(aluno))
+
+     res.json({ alunoCreds, alunoNota});
+    }, 6000); 
+  }
   
 });
 

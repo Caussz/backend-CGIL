@@ -1,0 +1,32 @@
+2023/05/23-15:28:16.876 33a2 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/23-15:28:16.877 33a2 Recovering log #399
+2023/05/23-15:28:16.938 33a2 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000399.log 
+2023/05/23-15:28:17.724 339f Compacting 1@1 + 2@2 files
+2023/05/23-15:28:17.801 339f Generated table #412@1: 26689 keys, 2198997 bytes
+2023/05/23-15:28:17.825 339f Generated table #413@1: 3000 keys, 2143543 bytes
+2023/05/23-15:28:17.825 339f Compacted 1@1 + 2@2 files => 4342540 bytes
+2023/05/23-15:28:17.826 339f compacted to: files[ 0 0 18 0 0 0 0 ]
+2023/05/23-15:28:17.827 339f Delete type=2 #377
+2023/05/23-15:28:17.827 339f Delete type=2 #398
+2023/05/23-15:28:17.827 339f Delete type=2 #401
+2023/05/23-15:28:35.407 33a2 Level-0 table #415: started
+2023/05/23-15:28:35.426 33a2 Level-0 table #415: 1006628 bytes OK
+2023/05/23-15:28:35.429 33a2 Delete type=0 #399
+2023/05/23-15:28:35.437 33a5 Compacting 1@0 + 0@1 files
+2023/05/23-15:28:35.457 33a5 Generated table #416@0: 21205 keys, 193603 bytes
+2023/05/23-15:28:35.475 33a5 Generated table #417@0: 16697 keys, 428913 bytes
+2023/05/23-15:28:35.475 33a5 Compacted 1@0 + 0@1 files => 622516 bytes
+2023/05/23-15:28:35.477 33a5 compacted to: files[ 0 2 18 0 0 0 0 ]
+2023/05/23-15:28:35.478 33a5 Delete type=2 #415
+2023/05/23-15:28:36.455 33a2 Compacting 1@1 + 4@2 files
+2023/05/23-15:28:36.505 33a2 Generated table #418@1: 58519 keys, 2266060 bytes
+2023/05/23-15:28:36.540 33a2 Generated table #419@1: 30118 keys, 2157139 bytes
+2023/05/23-15:28:36.608 33a2 Generated table #420@1: 108099 keys, 2261904 bytes
+2023/05/23-15:28:36.671 33a2 Generated table #421@1: 101441 keys, 2119457 bytes
+2023/05/23-15:28:36.671 33a2 Compacted 1@1 + 4@2 files => 8804560 bytes
+2023/05/23-15:28:36.672 33a2 compacted to: files[ 0 1 18 0 0 0 0 ]
+2023/05/23-15:28:36.672 33a2 Delete type=2 #408
+2023/05/23-15:28:36.672 33a2 Delete type=2 #417
+2023/05/23-15:28:36.672 33a2 Delete type=2 #409
+2023/05/23-15:28:36.672 33a2 Delete type=2 #407
+2023/05/23-15:28:36.672 33a2 Delete type=2 #410

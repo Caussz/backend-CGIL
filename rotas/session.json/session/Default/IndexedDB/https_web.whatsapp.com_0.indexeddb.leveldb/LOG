@@ -1,0 +1,20 @@
+2023/05/23-10:27:39.725 224c Reusing MANIFEST /home/caussz/backend-CGIL/rotas/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/23-10:27:39.725 224c Recovering log #621
+2023/05/23-10:27:39.735 224c Reusing old log /home/caussz/backend-CGIL/rotas/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000621.log 
+2023/05/23-10:36:39.800 224c Compacting 1@1 + 6@2 files
+2023/05/23-10:36:39.848 224c Generated table #636@1: 52684 keys, 2187217 bytes
+2023/05/23-10:36:39.915 224c Generated table #637@1: 104513 keys, 2254654 bytes
+2023/05/23-10:36:39.982 224c Generated table #638@1: 104795 keys, 2255356 bytes
+2023/05/23-10:36:40.057 224c Generated table #639@1: 103685 keys, 2253823 bytes
+2023/05/23-10:36:40.149 224c Generated table #640@1: 104278 keys, 2255863 bytes
+2023/05/23-10:36:40.224 224c Generated table #641@1: 103903 keys, 2255162 bytes
+2023/05/23-10:36:40.245 224c Generated table #642@1: 18635 keys, 405742 bytes
+2023/05/23-10:36:40.245 224c Compacted 1@1 + 6@2 files => 13867817 bytes
+2023/05/23-10:36:40.247 224c compacted to: files[ 0 0 21 0 0 0 0 ]
+2023/05/23-10:36:40.247 224c Delete type=2 #616
+2023/05/23-10:36:40.248 224c Delete type=2 #624
+2023/05/23-10:36:40.248 224c Delete type=2 #619
+2023/05/23-10:36:40.248 224c Delete type=2 #617
+2023/05/23-10:36:40.248 224c Delete type=2 #615
+2023/05/23-10:36:40.248 224c Delete type=2 #618
+2023/05/23-10:36:40.248 224c Delete type=2 #620
