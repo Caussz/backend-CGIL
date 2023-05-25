@@ -1,32 +1,45 @@
-2023/05/23-15:28:16.876 33a2 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/05/23-15:28:16.877 33a2 Recovering log #399
-2023/05/23-15:28:16.938 33a2 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000399.log 
-2023/05/23-15:28:17.724 339f Compacting 1@1 + 2@2 files
-2023/05/23-15:28:17.801 339f Generated table #412@1: 26689 keys, 2198997 bytes
-2023/05/23-15:28:17.825 339f Generated table #413@1: 3000 keys, 2143543 bytes
-2023/05/23-15:28:17.825 339f Compacted 1@1 + 2@2 files => 4342540 bytes
-2023/05/23-15:28:17.826 339f compacted to: files[ 0 0 18 0 0 0 0 ]
-2023/05/23-15:28:17.827 339f Delete type=2 #377
-2023/05/23-15:28:17.827 339f Delete type=2 #398
-2023/05/23-15:28:17.827 339f Delete type=2 #401
-2023/05/23-15:28:35.407 33a2 Level-0 table #415: started
-2023/05/23-15:28:35.426 33a2 Level-0 table #415: 1006628 bytes OK
-2023/05/23-15:28:35.429 33a2 Delete type=0 #399
-2023/05/23-15:28:35.437 33a5 Compacting 1@0 + 0@1 files
-2023/05/23-15:28:35.457 33a5 Generated table #416@0: 21205 keys, 193603 bytes
-2023/05/23-15:28:35.475 33a5 Generated table #417@0: 16697 keys, 428913 bytes
-2023/05/23-15:28:35.475 33a5 Compacted 1@0 + 0@1 files => 622516 bytes
-2023/05/23-15:28:35.477 33a5 compacted to: files[ 0 2 18 0 0 0 0 ]
-2023/05/23-15:28:35.478 33a5 Delete type=2 #415
-2023/05/23-15:28:36.455 33a2 Compacting 1@1 + 4@2 files
-2023/05/23-15:28:36.505 33a2 Generated table #418@1: 58519 keys, 2266060 bytes
-2023/05/23-15:28:36.540 33a2 Generated table #419@1: 30118 keys, 2157139 bytes
-2023/05/23-15:28:36.608 33a2 Generated table #420@1: 108099 keys, 2261904 bytes
-2023/05/23-15:28:36.671 33a2 Generated table #421@1: 101441 keys, 2119457 bytes
-2023/05/23-15:28:36.671 33a2 Compacted 1@1 + 4@2 files => 8804560 bytes
-2023/05/23-15:28:36.672 33a2 compacted to: files[ 0 1 18 0 0 0 0 ]
-2023/05/23-15:28:36.672 33a2 Delete type=2 #408
-2023/05/23-15:28:36.672 33a2 Delete type=2 #417
-2023/05/23-15:28:36.672 33a2 Delete type=2 #409
-2023/05/23-15:28:36.672 33a2 Delete type=2 #407
-2023/05/23-15:28:36.672 33a2 Delete type=2 #410
+2023/05/25-08:46:57.895 3215 Reusing MANIFEST /home/caua.silva/Downloads/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/25-08:46:57.896 3215 Recovering log #1226
+2023/05/25-08:46:58.020 3215 Reusing old log /home/caua.silva/Downloads/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001226.log 
+2023/05/25-08:47:18.366 3212 Level-0 table #1250: started
+2023/05/25-08:47:18.530 3212 Level-0 table #1250: 1158528 bytes OK
+2023/05/25-08:47:18.563 3212 Delete type=0 #1226
+2023/05/25-08:47:31.338 3224 Compacting 1@0 + 0@1 files
+2023/05/25-08:47:31.426 3224 Generated table #1251@0: 18298 keys, 357261 bytes
+2023/05/25-08:47:31.459 3224 Generated table #1252@0: 2665 keys, 70769 bytes
+2023/05/25-08:47:31.493 3224 Generated table #1253@0: 2832 keys, 51603 bytes
+2023/05/25-08:47:31.493 3224 Compacted 1@0 + 0@1 files => 479633 bytes
+2023/05/25-08:47:31.527 3224 compacted to: files[ 0 3 36 0 0 0 0 ]
+2023/05/25-08:47:31.528 3224 Delete type=2 #1250
+2023/05/25-08:48:11.338 3224 Compacting 1@1 + 1@2 files
+2023/05/25-08:48:11.488 3224 Generated table #1254@1: 52596 keys, 2240635 bytes
+2023/05/25-08:48:11.521 3224 Generated table #1255@1: 120 keys, 83462 bytes
+2023/05/25-08:48:11.522 3224 Compacted 1@1 + 1@2 files => 2324097 bytes
+2023/05/25-08:48:11.558 3224 compacted to: files[ 0 2 37 0 0 0 0 ]
+2023/05/25-08:48:11.559 3224 Delete type=2 #1247
+2023/05/25-08:48:11.559 3224 Delete type=2 #1251
+2023/05/25-08:49:51.377 3259 Compacting 1@1 + 10@2 files
+2023/05/25-08:49:51.526 3259 Generated table #1256@1: 10689 keys, 2149044 bytes
+2023/05/25-08:49:51.677 3259 Generated table #1257@1: 30692 keys, 2254911 bytes
+2023/05/25-08:49:51.777 3259 Generated table #1258@1: 25197 keys, 2277853 bytes
+2023/05/25-08:49:51.911 3259 Generated table #1259@1: 24834 keys, 2272628 bytes
+2023/05/25-08:49:52.011 3259 Generated table #1260@1: 20919 keys, 2223651 bytes
+2023/05/25-08:49:52.094 3259 Generated table #1261@1: 4171 keys, 2126304 bytes
+2023/05/25-08:49:52.194 3259 Generated table #1262@1: 8852 keys, 2129719 bytes
+2023/05/25-08:49:52.303 3259 Generated table #1263@1: 6716 keys, 2127300 bytes
+2023/05/25-08:49:52.445 3259 Generated table #1264@1: 72627 keys, 2211704 bytes
+2023/05/25-08:49:52.562 3259 Generated table #1265@1: 103876 keys, 2253550 bytes
+2023/05/25-08:49:52.604 3259 Generated table #1266@1: 1487 keys, 32494 bytes
+2023/05/25-08:49:52.604 3259 Compacted 1@1 + 10@2 files => 22059158 bytes
+2023/05/25-08:49:52.662 3259 compacted to: files[ 0 1 38 0 0 0 0 ]
+2023/05/25-08:49:52.663 3259 Delete type=2 #1234
+2023/05/25-08:49:52.663 3259 Delete type=2 #1235
+2023/05/25-08:49:52.663 3259 Delete type=2 #960
+2023/05/25-08:49:52.663 3259 Delete type=2 #1236
+2023/05/25-08:49:52.663 3259 Delete type=2 #1252
+2023/05/25-08:49:52.663 3259 Delete type=2 #1231
+2023/05/25-08:49:52.663 3259 Delete type=2 #1232
+2023/05/25-08:49:52.663 3259 Delete type=2 #959
+2023/05/25-08:49:52.663 3259 Delete type=2 #1233
+2023/05/25-08:49:52.663 3259 Delete type=2 #961
+2023/05/25-08:49:52.663 3259 Delete type=2 #958

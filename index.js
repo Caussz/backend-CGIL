@@ -1,11 +1,12 @@
 const color = require('colors');
 const express = require('express')
 const mainrouter = require('./rotas/api');
-const wpprouter = require('./rotas/whats');
+const wpprouter = require('./rotas/wpp');
 const startBOT = require('./rotas/wpp')
-
-const { Client, LocalAuth } = require('whatsapp-web.js');
-
+const alunoNota = require('./src/utils/alunoTotal.json')
+const fs = require('fs')
+const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
+const alunoCreds = JSON.parse(fs.readFileSync('./src/utils/alunoCreds.json'))
 const SESSION_FILE_PATH = './session.json';
 
 // Load the session data if it has been previously saved
@@ -32,6 +33,14 @@ app.use('/wpp', wpprouter); // rota do whatsapp
 
 startBOT(client)
 
+app.get('/uiui', async (req, res) => {
+    const media = MessageMedia.fromFilePath('./src/image/boletim.jpg');
+    res.send('oi')
+   // await startBOT(client)
+    client.sendMessage('554792091566@c.us', media, {caption: `${JSON.stringify(alunoNota)}`})
+    //console.log(client)
+
+})
 app.listen(process.env.PORT || port, () => { 
     console.clear();
     console.log(`Seu site de apis esta rodando na porta: ${port}`.atencao);

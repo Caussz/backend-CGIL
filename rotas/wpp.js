@@ -1,3 +1,5 @@
+const express = require("express");
+const app = express.Router(); // start das rotas
 const qrcode = require('qrcode-terminal');
 const alunoInfo = require('../src/utils/alunoInfo')
 const alunoLogin = require('../src/utils/alunoLogin.json')
@@ -20,6 +22,8 @@ const client = new Client({
 });
 
 async function startBOT(client) {
+
+
     client.on('qr', qr => {
         qrcode.generate(qr, { small: true });
     });
@@ -37,6 +41,7 @@ async function startBOT(client) {
         client.on('message', message => {
             console.log(message)
         
+            const command = message.body
           switch (message.body) {
             case 'teste':
                 message.reply(JSON.stringify(message))
