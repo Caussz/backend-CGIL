@@ -1,3 +1,3 @@
-2023/05/25-08:45:52.178 3116 Reusing MANIFEST /home/caua.silva/Downloads/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/05/25-08:45:52.179 3116 Recovering log #1226
-2023/05/25-08:45:52.298 3116 Reusing old log /home/caua.silva/Downloads/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001226.log 
+2023/05/25-10:54:29.694 1782 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/25-10:54:29.695 1782 Recovering log #1249
+2023/05/25-10:54:29.724 1782 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001249.log 

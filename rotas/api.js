@@ -3,8 +3,12 @@ const cheerio = require(`cheerio`);
 const puppeteer = require(`puppeteer`);
 const express = require("express");
 const app = express.Router(); // start das rotas
-
+const fs = require('fs');
 // importacao dos objetos
+const alunoNota = JSON.parse(fs.readFileSync('./src/utils/alunoTotal.json'))
+const alunoCreds = JSON.parse(fs.readFileSync('./src/utils/alunoCreds.json'))
+const alunoLogin = JSON.parse(fs.readFileSync('./src/utils/alunoLogin.json'))
+// ../src/utils/alunoLogin.json
 const aluno = require('../src/utils/alunoInfo')
 const nota = require('../src/utils/alunoNota')
 // importacao da função para tranformar a imagem em link
@@ -28,109 +32,138 @@ app.get("/sigaa", async (req, res) => {
     });
     return;
   } 
-  // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
-    const browser = await puppeteer.launch({ headless: true });
-    const page = await browser.newPage();
-    const pages = await browser.pages();
-    await page.goto(URL_LOGIN, {
-      waitUntil: "load",
-      timeout: 0,
-    });
-    // Faz o login no SIGAA
-    await page.type('input[type="text"]', user, { delay: 100 });
-    await page.type('input[type="password"]', pass, { delay: 100 });
-    await page.click("button"); // botao de aceitar, pode ter auteracoes
-    await page.click('input[type="submit"]');
-    // Esperar alguns segundos para aaprecer os seletores
-    setTimeout(async function () {
-      const elementosRepetidos = await page.$$(".ui-link-inherit");
-      const elementoDesejado = elementosRepetidos[1];
-      await elementoDesejado.click();
-    }, 4000); 
-    setTimeout(async function () {
-      const elementosRepetidos = await page.$$("img");
-      const elementoDesejado = elementosRepetidos[1];
-      await elementoDesejado.click();
-    }, 4000)
-    // Esperar alguns segundos para carregar totalmente a pagina do boletim
-    setTimeout(async function () {
-      const targets = await browser.targets();
-      const target = targets.find((target) => target.url().includes(URL_MENU));
-      const newPage = await target.page();
-      await newPage.screenshot({ path: "./src/image/boletim.jpg" }); // print do boletim
-      // iniciaçao do modulo Cheerio
-      const html = await newPage.content();
-      const $ = cheerio.load(html);
-      // Extrai as informações do aluno e das notas do HTML usando o modulo Cheerio
-      $("table.listagem td").each((index, element) => {  // each para filtragem das notas por cada td
-        const text = $(element).text().trim();
-        console.log(text)
-        switch (index) {
-          case 2:
-            aluno.nome = text;
-            break;
-          case 6:
-            aluno.turma = text;
-            break;
-          case 10:
-            aluno.situacao = text;
-            break;
-          case 4:
-            aluno.matricula = text;
-            break;
-          case 8:
-            aluno.ano = text;
-            break;
-            case 13:
-              nota.artes.tri1 = text;
+  function verifyUser(user) {
+    let status = false
+    Object.keys(alunoLogin).forEach((i) => {
+      if (alunoLogin[i].user === user && alunoLogin[i].pass === pass) {
+        status = true
+      }
+    })
+    return status
+  }
+  if(!verifyUser(user)){
+     // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
+     const browser = await puppeteer.launch({ headless: false });
+     const page = await browser.newPage();
+     const pages = await browser.pages();
+     await page.goto(URL_LOGIN, {
+       waitUntil: "load",
+       timeout: 0,
+     });
+     // Faz o login no SIGAA
+     await page.type('input[type="text"]', user, { delay: 100 });
+     await page.type('input[type="password"]', pass, { delay: 100 });
+     await page.click("button"); // botao de aceitar, pode ter auteracoes
+     await page.click('input[type="submit"]');
+     // Esperar alguns segundos para aaprecer os seletores
+     setTimeout(async function () {
+       const elementosRepetidos = await page.$$(".ui-link-inherit");
+       const elementoDesejado = elementosRepetidos[1];
+       await elementoDesejado.click();
+     }, 4000); 
+     // Esperar alguns segundos para carregar totalmente a pagina do boletim
+     setTimeout(async function () {
+       const targets = await browser.targets();
+       const target = targets.find((target) => target.url().includes(URL_MENU));
+       const newPage = await target.page();
+       await newPage.screenshot({ path: "./src/image/boletim.jpg" }); // print do boletim
+       // iniciaçao do modulo Cheerio
+       const html = await newPage.content();
+       const $ = cheerio.load(html);
+       // Extrai as informações do aluno e das notas do HTML usando o modulo Cheerio
+       $("table.listagem td").each((index, element) => {  // each para filtragem das notas por cada td
+         const text = $(element).text().trim();
+         console.log(text)
+         switch (index) {
+           case 2:
+             aluno.nome = text;
              break;
-             case 26:
-              nota.biologia.tri1 = text;
+           case 6:
+             aluno.turma = text;
              break;
-             case 39:
-              nota.edf.tri1 = text;
+           case 10:
+             aluno.situacao = text;
              break;
-             case 52:
-              nota.fisica.tri1 = text;
+           case 4:
+             aluno.matricula = text;
              break;
-             case 65:
-              nota.geo.tri1 = text;
+           case 8:
+             aluno.ano = text;
              break;
-             case 78:
-              nota.hist.tri1 = text;
-             break;
-             case 91:
-              nota.math.tri1 = text;
-             break;
-             case 104:
-              nota.port.tri1 = text;
-             break;
-             case 117:
-              nota.quimi.tri1 = text;
-             break;
-             case 130:
-              nota.introComp.tri1 = text;
-             break;
-             case 143:
-              nota.progI.tri1 = text;
-             break;
-             case 156:
-              nota.devWeb.tri1 = text;
-             break;
-             case 169:
-              nota.projInt.tri1 = text;
-             break;
-             case 186:
-              aluno.totalFalta = text;
-             break;
-        }
-      });
-      // Transformar imagem em link
-      await TelegraPh('./src/image/boletim.jpg').then(async (result) => aluno.printBoletim = result)
-      // Retorna o resultado da consulta em formato JSON
-     res.json({ aluno, nota });
-    }, 6000);
+             case 13:
+               nota.artes.tri1 = text;
+              break;
+              case 26:
+               nota.biologia.tri1 = text;
+              break;
+              case 39:
+               nota.edf.tri1 = text;
+              break;
+              case 52:
+               nota.fisica.tri1 = text;
+              break;
+              case 65:
+               nota.geo.tri1 = text;
+              break;
+              case 78:
+               nota.hist.tri1 = text;
+              break;
+              case 91:
+               nota.math.tri1 = text;
+              break;
+              case 104:
+               nota.port.tri1 = text;
+              break;
+              case 117:
+               nota.quimi.tri1 = text;
+              break;
+              case 130:
+               nota.introComp.tri1 = text;
+              break;
+              case 143:
+               nota.progI.tri1 = text;
+              break;
+              case 156:
+               nota.devWeb.tri1 = text;
+              break;
+              case 169:
+               nota.projInt.tri1 = text;
+              break;
+              case 186:
+               aluno.totalFalta = text;
+              break;
+         }
+       });
+       // Transformar imagem em link
+       await TelegraPh('./src/image/boletim.jpg').then(async (result) => aluno.printBoletim = result)
+       const login = {
+        user,
+        pass,
+        name: aluno.nome
+       }
+       const alunoaf = {
+        aluno,
+        nota
+       }
+       alunoLogin.push(login)
+       alunoCreds.push(alunoaf)
+       fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(alunoLogin));
+       fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(alunoCreds));
+       // Retorna o resultado da consulta em formato JSON
+      res.json({ aluno, nota });
+
+     }, 6000);
   
+     
+  } else {
+    Object.keys(alunoLogin).forEach((i) => {
+      if (alunoLogin[i].name === alunoCreds[i].nome) {
+        res.json(alunoCreds[i])
+      }
+    })
+    
+  }
+ 
 });
 
 module.exports = app;
