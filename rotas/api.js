@@ -18,21 +18,22 @@ const TelegraPh = require('../src/utils/telegraph')
 const URL_LOGIN = "https://sig.ifc.edu.br/sigaa/mobile/touch/login.jsf";
 const URL_MENU = "https://sig.ifc.edu.br/sigaa/mobile/touch/menu.jsf";
 // Segue o exemplo de como ficaria a url:
-// --> http://localhost:3000/api/sigaa?user=SeuUsuario&pass=SuaSenha
+// --> http://localhost:3000/api/sigaa?user=SeuUsuario&pass=SuaSenha&number=SeuNumero
 
 app.get("/sigaa", async (req, res) => {
    // Pega as info do usuário a partir dos parâmetros 
   const user = req.query.user;
   const pass = req.query.pass;
+  const number = req.query.number;
   // verifica se as info foram fornecidas
-  if (!user || !pass) {
+  if (!user || !pass || !number) {
     res.json({
       status: false,
-      mensagem: 'Coloque o parametro "usuario" e "pass"',
+      mensagem: 'Coloque o parametro "usuario", "pass" e "number"',
     });
     return;
   } 
-  function verifyUser(user) {
+  function verifyUser(user, pass) {
     let status = false
     Object.keys(alunoLogin).forEach((i) => {
       if (alunoLogin[i].user === user && alunoLogin[i].pass === pass) {
@@ -41,7 +42,7 @@ app.get("/sigaa", async (req, res) => {
     })
     return status
   }
-  if(!verifyUser(user)){
+  if(!verifyUser(user, pass)){
      // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
      const browser = await puppeteer.launch({ headless: false });
      const page = await browser.newPage();
@@ -139,29 +140,31 @@ app.get("/sigaa", async (req, res) => {
        const login = {
         user,
         pass,
+        number,
         name: aluno.nome
        }
-       const alunoaf = {
+       const alunoInt = {
         aluno,
         nota
        }
        alunoLogin.push(login)
-       alunoCreds.push(alunoaf)
+       alunoCreds.push(alunoInt)
        fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(alunoLogin));
        fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(alunoCreds));
        // Retorna o resultado da consulta em formato JSON
-      res.json({ aluno, nota });
+      return res.json({ aluno, nota });
 
      }, 6000);
   
      
   } else {
+    let result 
     Object.keys(alunoLogin).forEach((i) => {
-      if (alunoLogin[i].name === alunoCreds[i].nome) {
-        res.json(alunoCreds[i])
+      if (alunoLogin[i].name === alunoCreds[i].aluno.nome) {
+       result = alunoCreds[i]
       }
     })
-    
+    return res.json(result)
   }
  
 });
