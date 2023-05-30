@@ -39,6 +39,41 @@ const nota = {
       tri2: 0,
       tri3: 0
     },
+    portLiteratura: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    filosofia: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    sociologia: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    agroI: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    desenhorTec: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    zooI: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    praticaOrientada: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
     quimi: {
       tri1: 0,
       tri2: 0,

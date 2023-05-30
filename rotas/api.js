@@ -26,6 +26,7 @@ app.get("/sigaa", async (req, res) => {
   const pass = req.query.pass;
   const number = req.query.number;
   // verifica se as info foram fornecidas
+  aluno.numeroTel = number
   if (!user || !pass || !number) {
     res.json({
       status: false,
@@ -58,6 +59,7 @@ app.get("/sigaa", async (req, res) => {
      await page.click('input[type="submit"]');
      // Esperar alguns segundos para aaprecer os seletores
      setTimeout(async function () {
+      await page.waitForSelector(".ui-link-inherit");
        const elementosRepetidos = await page.$$(".ui-link-inherit");
        const elementoDesejado = elementosRepetidos[1];
        await elementoDesejado.click();
@@ -67,6 +69,13 @@ app.get("/sigaa", async (req, res) => {
        const targets = await browser.targets();
        const target = targets.find((target) => target.url().includes(URL_MENU));
        const newPage = await target.page();
+       const elementosRepetidos = await newPage.$$('a');
+       const elementoDesejado = elementosRepetidos[12];
+       await newPage.waitForSelector(elementoDesejado)
+       if (elementosRepetidos.length === 15) {
+          await elementoDesejado.click()
+       }
+       console.log(elementosRepetidos.length)
        await newPage.screenshot({ path: "./src/image/boletim.jpg" }); // print do boletim
        // iniciaçao do modulo Cheerio
        const html = await newPage.content();
@@ -74,66 +83,114 @@ app.get("/sigaa", async (req, res) => {
        // Extrai as informações do aluno e das notas do HTML usando o modulo Cheerio
        $("table.listagem td").each((index, element) => {  // each para filtragem das notas por cada td
          const text = $(element).text().trim();
-         console.log(text)
-         switch (index) {
-           case 2:
-             aluno.nome = text;
-             break;
-           case 6:
-             aluno.turma = text;
-             break;
-           case 10:
-             aluno.situacao = text;
-             break;
-           case 4:
-             aluno.matricula = text;
-             break;
-           case 8:
-             aluno.ano = text;
-             break;
+        //console.log(text)
+        if(index === 2) aluno.nome = text;
+        if(index === 4) aluno.matricula = text;
+        if(index === 6) aluno.turma = text;
+        if(index === 8) aluno.ano = text;
+        if(index === 10) aluno.situacao = text;
+        
+        if (aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - A (2023)") {
+          
+          switch (index) {
              case 13:
-               nota.artes.tri1 = text;
-              break;
-              case 26:
-               nota.biologia.tri1 = text;
-              break;
-              case 39:
-               nota.edf.tri1 = text;
-              break;
-              case 52:
-               nota.fisica.tri1 = text;
-              break;
-              case 65:
-               nota.geo.tri1 = text;
-              break;
-              case 78:
-               nota.hist.tri1 = text;
-              break;
-              case 91:
-               nota.math.tri1 = text;
-              break;
-              case 104:
-               nota.port.tri1 = text;
-              break;
-              case 117:
-               nota.quimi.tri1 = text;
-              break;
-              case 130:
-               nota.introComp.tri1 = text;
-              break;
-              case 143:
-               nota.progI.tri1 = text;
-              break;
-              case 156:
-               nota.devWeb.tri1 = text;
-              break;
-              case 169:
-               nota.projInt.tri1 = text;
-              break;
-              case 186:
-               aluno.totalFalta = text;
-              break;
-         }
+                nota.artes.tri1 = text;
+               break;
+               case 26:
+                nota.biologia.tri1 = text;
+               break;
+               case 39:
+                nota.edf.tri1 = text;
+               break;
+               case 52:
+                nota.fisica.tri1 = text;
+               break;
+               case 65:
+                nota.geo.tri1 = text;
+               break;
+               case 78:
+                nota.hist.tri1 = text;
+               break;
+               case 91:
+                nota.math.tri1 = text;
+               break;
+               case 104:
+                nota.port.tri1 = text;
+               break;
+               case 117:
+                nota.quimi.tri1 = text;
+               break;
+               case 130:
+                nota.introComp.tri1 = text;
+               break;
+               case 143:
+                nota.progI.tri1 = text;
+               break;
+               case 156:
+                nota.devWeb.tri1 = text;
+               break;
+               case 169:
+                nota.projInt.tri1 = text;
+               break;
+               case 186:
+                aluno.totalFalta = text;
+               break;
+          }
+          
+        } else if (aluno.turma === "TÉCNICO EM AGROPECUÁRIA INTEGRADO AO ENSINO MÉDIO - C (2023)") {
+          switch (index) {
+              case 13:
+                nota.portLiteratura.tri1 = text;
+               break;
+               case 26:
+                nota.artes.tri1 = text;
+               break;
+               case 39:
+                nota.edf.tri1 = text;
+               break;
+               case 52:
+                nota.math.tri1 = text;
+               break;
+
+               case 65:
+                nota.quimi.tri1 = text;
+               break;
+               case 78:
+                nota.fisica.tri1 = text;
+               break;
+               case 91:
+                nota.biologia.tri1 = text;
+               break;
+               case 104:
+                nota.geo.tri1 = text;
+               break;
+               case 117:
+                nota.hist.tri1 = text;
+               break;
+               case 130:
+                nota.filosofia.tri1 = text;
+               break;
+               case 143:
+                nota.sociologia.tri1 = text;
+               break;
+               case 156:
+                nota.agroI.tri1 = text;
+               break;
+               case 169:
+                nota.desenhorTec.tri1 = text;
+               break;
+               case 182:
+                nota.zooI.tri1 = text;
+               break;
+               case 195:
+                nota.praticaOrientada.tri1 = text;
+               break;
+               case 208:
+                aluno.totalFalta.tri1 = text;
+               break;
+        }
+        }
+         
        });
        // Transformar imagem em link
        await TelegraPh('./src/image/boletim.jpg').then(async (result) => aluno.printBoletim = result)
@@ -147,10 +204,10 @@ app.get("/sigaa", async (req, res) => {
         aluno,
         nota
        }
-       alunoLogin.push(login)
-       alunoCreds.push(alunoInt)
-       fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(alunoLogin));
-       fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(alunoCreds));
+       //alunoLogin.push(login)
+      // alunoCreds.push(alunoInt)
+       //fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(alunoLogin));
+      // fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(alunoCreds));
        // Retorna o resultado da consulta em formato JSON
       return res.json({ aluno, nota });
 

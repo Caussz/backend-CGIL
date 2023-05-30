@@ -40,7 +40,6 @@ async function startBOT(client) {
             const device = message._data.deviceType
             const commandInit = message.body.slice(prefix.length).trim().split(/ +/);
             const command = commandInit.shift().toLowerCase();
-            if (command) console.log(`>> [ WhatsApp ] - C: ${command}`)
             // comandos 
           switch (command) {
             case 'notas':

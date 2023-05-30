@@ -1,6 +1,2 @@
-2023/05/28-18:21:31.997 19b4 Reusing MANIFEST C:\node\backend-CGIL\session.json\session\Default\Local Storage\leveldb/MANIFEST-000001
-2023/05/28-18:21:31.997 19b4 Recovering log #4
-2023/05/28-18:21:31.999 19b4 Reusing old log C:\node\backend-CGIL\session.json\session\Default\Local Storage\leveldb/000004.log 
-2023/05/28-20:01:54.892 2a14 Level-0 table #8: started
-2023/05/28-20:01:54.896 2a14 Level-0 table #8: 12089 bytes OK
-2023/05/28-20:01:54.898 2a14 Delete type=0 #4
+2023/05/30-16:28:44.854 20ad2 Creating DB /home/caussz/backend-CGIL/session.json/session/Default/Local Storage/leveldb since it was missing.
+2023/05/30-16:28:44.878 20ad2 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/Local Storage/leveldb/MANIFEST-000001

@@ -1,3 +1,2 @@
-2023/05/28-18:21:31.989 19b4 Reusing MANIFEST C:\node\backend-CGIL\session.json\session\Default\Platform Notifications/MANIFEST-000001
-2023/05/28-18:21:31.989 19b4 Recovering log #3
-2023/05/28-18:21:31.990 19b4 Reusing old log C:\node\backend-CGIL\session.json\session\Default\Platform Notifications/000003.log 
+2023/05/30-16:28:56.021 20ad1 Creating DB /home/caussz/backend-CGIL/session.json/session/Default/Platform Notifications since it was missing.
+2023/05/30-16:28:56.045 20ad1 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/Platform Notifications/MANIFEST-000001
