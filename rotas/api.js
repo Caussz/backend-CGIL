@@ -25,25 +25,30 @@ app.get("/sigaa", async (req, res) => {
   const user = req.query.user;
   const pass = req.query.pass;
   const number = req.query.number;
+  const serie = req.query.serie;
   // verifica se as info foram fornecidas
   aluno.numeroTel = number
-  if (!user || !pass || !number) {
+  if (!user || !pass || !number || !serie) {
     res.json({
       status: false,
-      mensagem: 'Coloque o parametro "usuario", "pass" e "number"',
+      user,
+      pass,
+      number,
+      serie,
+      mensagem: 'Coloque o parametro "usuario", "pass", "number" e "serie',
     });
     return;
   } 
-  function verifyUser(user, pass) {
+  function verifyUser(user, pass,serie) {
     let status = false
     Object.keys(alunoLogin).forEach((i) => {
-      if (alunoLogin[i].user === user && alunoLogin[i].pass === pass) {
+      if (alunoLogin[i].user === user && alunoLogin[i].pass === pass && alunoLogin[i].serie === serie) {
         status = true
       }
     })
     return status
   }
-  if(!verifyUser(user, pass)){
+  if(!verifyUser(user, pass, serie)){
      // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
      const browser = await puppeteer.launch({ headless: false });
      const page = await browser.newPage();
@@ -55,8 +60,12 @@ app.get("/sigaa", async (req, res) => {
      // Faz o login no SIGAA
      await page.type('input[type="text"]', user, { delay: 100 });
      await page.type('input[type="password"]', pass, { delay: 100 });
-     await page.click("button"); // botao de aceitar, pode ter auteracoes
+     await page.click("button");
      await page.click('input[type="submit"]');
+     await page.waitForNavigation({ waitUntil: "networkidle0" });
+  
+    // await page.click("button"); // botao de aceitar, pode ter auteracoes
+     
      // Esperar alguns segundos para aaprecer os seletores
      setTimeout(async function () {
       await page.waitForSelector(".ui-link-inherit");
@@ -69,13 +78,19 @@ app.get("/sigaa", async (req, res) => {
        const targets = await browser.targets();
        const target = targets.find((target) => target.url().includes(URL_MENU));
        const newPage = await target.page();
-       const elementosRepetidos = await newPage.$$('a');
-       const elementoDesejado = elementosRepetidos[12];
-       await newPage.waitForSelector(elementoDesejado)
-       if (elementosRepetidos.length === 15) {
-          await elementoDesejado.click()
+       if (serie == "2") {
+         const elementosRepetidos = await newPage.$$('a');
+         const elementoDesejado = elementosRepetidos[12];
+         console.log(elementosRepetidos.length)
+        
+         if (elementoDesejado) {
+          await Promise.all([
+            newPage.waitForNavigation(),
+            newPage.evaluate((element) => element.click(), elementoDesejado),
+          ]);
+        }
        }
-       console.log(elementosRepetidos.length)
+       //console.log(elementosRepetidos.length)
        await newPage.screenshot({ path: "./src/image/boletim.jpg" }); // print do boletim
        // iniciaçao do modulo Cheerio
        const html = await newPage.content();
@@ -83,14 +98,14 @@ app.get("/sigaa", async (req, res) => {
        // Extrai as informações do aluno e das notas do HTML usando o modulo Cheerio
        $("table.listagem td").each((index, element) => {  // each para filtragem das notas por cada td
          const text = $(element).text().trim();
-        //console.log(text)
+        console.log(text)
         if(index === 2) aluno.nome = text;
         if(index === 4) aluno.matricula = text;
         if(index === 6) aluno.turma = text;
         if(index === 8) aluno.ano = text;
         if(index === 10) aluno.situacao = text;
         
-        if (aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - A (2023)") {
+        if (aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - A (2023)" || aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - B (2023)" || aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - C (2023)") {
           
           switch (index) {
              case 13:
@@ -137,6 +152,59 @@ app.get("/sigaa", async (req, res) => {
                break;
           }
           
+        } else if(aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - A (2022)" || aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - B (2022)" || aluno.turma === "TÉCNICO EM INFORMÁTICA PARA INTERNET INTEGRADO AO ENSINO MÉDIO - C (2022)") {
+
+          switch (index) {
+            case 13:
+               nota.artes.tri1 = text;
+              break;
+              case 26:
+               nota.biologia.tri1 = text;
+              break;
+              case 39:
+               nota.edf.tri1 = text;
+              break;
+              case 52:
+               nota.filosofia.tri1 = text;
+              break;
+              case 65:
+               nota.math.tri1 = text;
+              break;
+              case 78:
+               nota.fisica.tri1 = text;
+              break;
+              case 91:
+               nota.geo.tri1 = text;
+              break;
+              case 104:
+               nota.hist.tri1 = text;
+              break;
+              case 117:
+               nota.port.tri1 = text;
+              break;
+              case 130:
+               nota.quimi.tri1 = text;
+              break;
+              case 143:
+               nota.sociologia.tri1 = text;
+              break;
+              case 156:
+               nota.devWebII.tri1 = text;
+              break;
+              case 169:
+               nota.banco.tri1 = text;
+              break;
+              case 182:
+               nota.projSoft.tri1 = text;
+              break;
+              case 195:
+               nota.projIntII.tri1 = text;
+              break;
+              case 221:
+               aluno.totalFalta = text;
+              break;
+         }
+
         } else if (aluno.turma === "TÉCNICO EM AGROPECUÁRIA INTEGRADO AO ENSINO MÉDIO - C (2023)") {
           switch (index) {
               case 13:
@@ -198,16 +266,17 @@ app.get("/sigaa", async (req, res) => {
         user,
         pass,
         number,
+        serie,
         name: aluno.nome
        }
        const alunoInt = {
         aluno,
         nota
        }
-       //alunoLogin.push(login)
-      // alunoCreds.push(alunoInt)
-       //fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(alunoLogin));
-      // fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(alunoCreds));
+       alunoLogin.push(login)
+       alunoCreds.push(alunoInt)
+       fs.writeFileSync('./src/utils/alunoLogin.json', JSON.stringify(alunoLogin));
+       fs.writeFileSync('./src/utils/alunoCreds.json', JSON.stringify(alunoCreds));
        // Retorna o resultado da consulta em formato JSON
       return res.json({ aluno, nota });
 
@@ -217,7 +286,7 @@ app.get("/sigaa", async (req, res) => {
   } else {
     let result 
     Object.keys(alunoLogin).forEach((i) => {
-      if (alunoLogin[i].name === alunoCreds[i].aluno.nome) {
+      if (alunoLogin[i].name === alunoCreds[i].aluno.nome ) {
        result = alunoCreds[i]
       }
     })

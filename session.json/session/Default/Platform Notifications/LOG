@@ -1,2 +1,3 @@
-2023/05/30-16:28:56.021 20ad1 Creating DB /home/caussz/backend-CGIL/session.json/session/Default/Platform Notifications since it was missing.
-2023/05/30-16:28:56.045 20ad1 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/Platform Notifications/MANIFEST-000001
+2023/06/01-16:29:59.008 d106 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/Platform Notifications/MANIFEST-000001
+2023/06/01-16:29:59.008 d106 Recovering log #3
+2023/06/01-16:29:59.008 d106 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/Platform Notifications/000003.log 

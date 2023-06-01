@@ -98,7 +98,27 @@ const nota = {
       tri1: 0,
       tri2: 0,
       tri3: 0
-    }
+    },
+    devWebII: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    banco: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    projSoft: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
+    projIntII: {
+      tri1: 0,
+      tri2: 0,
+      tri3: 0
+    },
   }
 
 module.exports = nota

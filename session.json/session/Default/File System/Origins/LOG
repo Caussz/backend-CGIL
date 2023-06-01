@@ -1,2 +1,3 @@
-2023/05/30-16:28:46.354 20ad4 Creating DB /home/caussz/backend-CGIL/session.json/session/Default/File System/Origins since it was missing.
-2023/05/30-16:28:46.377 20ad4 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/File System/Origins/MANIFEST-000001
+2023/06/01-16:29:59.566 d106 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/File System/Origins/MANIFEST-000001
+2023/06/01-16:29:59.566 d106 Recovering log #3
+2023/06/01-16:29:59.566 d106 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/File System/Origins/000003.log 
