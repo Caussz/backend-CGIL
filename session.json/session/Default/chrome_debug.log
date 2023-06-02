@@ -1,0 +1,3 @@
+[0601/213238.874:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'.", source:  (0)
+[0601/213238.875:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.", source:  (0)
+[0601/213306.228:INFO:CONSOLE(30)] "TypeError: Cannot read properties of undefined (reading 'toString')", source: https://web.whatsapp.com/vendor1~app.a91035d81a749b3d5627.js (30)
