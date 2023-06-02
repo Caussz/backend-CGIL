@@ -1,12 +1,48 @@
-2023/06/01-21:32:39.245 508 Reusing MANIFEST C:\node\backend-CGIL\session.json\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/06/01-21:32:39.247 508 Recovering log #2335
-2023/06/01-21:32:39.493 508 Reusing old log C:\node\backend-CGIL\session.json\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/002335.log 
-2023/06/01-21:33:06.894 2ecc Compacting 1@1 + 3@2 files
-2023/06/01-21:33:07.355 2ecc Generated table #2364@1: 103818 keys, 2255280 bytes
-2023/06/01-21:33:07.797 2ecc Generated table #2365@1: 89890 keys, 1963962 bytes
-2023/06/01-21:33:07.797 2ecc Compacted 1@1 + 3@2 files => 4219242 bytes
-2023/06/01-21:33:07.818 2ecc compacted to: files[ 0 0 28 0 0 0 0 ]
-2023/06/01-21:33:07.820 2ecc Delete type=2 #2330
-2023/06/01-21:33:07.826 2ecc Delete type=2 #2332
-2023/06/01-21:33:07.826 2ecc Delete type=2 #2333
-2023/06/01-21:33:07.826 2ecc Delete type=2 #2339
+2023/06/02-12:00:50.352 10404 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/02-12:00:50.352 10404 Recovering log #3841
+2023/06/02-12:00:50.502 10404 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/003841.log 
+2023/06/02-12:01:23.563 10401 Level-0 table #3868: started
+2023/06/02-12:01:23.587 10401 Level-0 table #3868: 1029313 bytes OK
+2023/06/02-12:01:23.598 10401 Delete type=0 #3841
+2023/06/02-12:01:23.606 103e1 Compacting 1@0 + 0@1 files
+2023/06/02-12:01:23.634 103e1 Generated table #3869@0: 22005 keys, 219728 bytes
+2023/06/02-12:01:23.643 103e1 Generated table #3870@0: 1454 keys, 30798 bytes
+2023/06/02-12:01:23.660 103e1 Generated table #3871@0: 12776 keys, 350049 bytes
+2023/06/02-12:01:23.669 103e1 Generated table #3872@0: 1721 keys, 32664 bytes
+2023/06/02-12:01:23.669 103e1 Compacted 1@0 + 0@1 files => 633239 bytes
+2023/06/02-12:01:23.679 103e1 compacted to: files[ 0 4 49 0 0 0 0 ]
+2023/06/02-12:01:23.680 103e1 Delete type=2 #3868
+2023/06/02-12:01:23.882 10401 Compacting 1@1 + 5@2 files
+2023/06/02-12:01:23.936 10401 Generated table #3873@1: 35631 keys, 2208756 bytes
+2023/06/02-12:01:23.967 10401 Generated table #3874@1: 3354 keys, 2169987 bytes
+2023/06/02-12:01:23.994 10401 Generated table #3875@1: 2651 keys, 2159234 bytes
+2023/06/02-12:01:24.020 10401 Generated table #3876@1: 2390 keys, 2155559 bytes
+2023/06/02-12:01:24.028 10401 Generated table #3877@1: 69 keys, 51349 bytes
+2023/06/02-12:01:24.028 10401 Compacted 1@1 + 5@2 files => 8744885 bytes
+2023/06/02-12:01:24.050 10401 compacted to: files[ 0 3 49 0 0 0 0 ]
+2023/06/02-12:01:24.050 10401 Delete type=2 #3748
+2023/06/02-12:01:24.050 10401 Delete type=2 #3747
+2023/06/02-12:01:24.050 10401 Delete type=2 #3865
+2023/06/02-12:01:24.050 10401 Delete type=2 #3749
+2023/06/02-12:01:24.050 10401 Delete type=2 #3864
+2023/06/02-12:01:24.050 10401 Delete type=2 #3869
+2023/06/02-12:02:23.945 10401 Compacting 1@1 + 8@2 files
+2023/06/02-12:02:23.981 10401 Generated table #3878@1: 2182 keys, 2146750 bytes
+2023/06/02-12:02:24.003 10401 Generated table #3879@1: 1552 keys, 2134990 bytes
+2023/06/02-12:02:24.026 10401 Generated table #3880@1: 3375 keys, 2133576 bytes
+2023/06/02-12:02:24.078 10401 Generated table #3881@1: 36023 keys, 2235891 bytes
+2023/06/02-12:02:24.128 10401 Generated table #3882@1: 25815 keys, 2279133 bytes
+2023/06/02-12:02:24.177 10401 Generated table #3883@1: 24903 keys, 2274784 bytes
+2023/06/02-12:02:24.225 10401 Generated table #3884@1: 25490 keys, 2270299 bytes
+2023/06/02-12:02:24.277 10401 Generated table #3885@1: 23403 keys, 2241924 bytes
+2023/06/02-12:02:24.277 10401 Compacted 1@1 + 8@2 files => 17717347 bytes
+2023/06/02-12:02:24.288 10401 compacted to: files[ 0 2 49 0 0 0 0 ]
+2023/06/02-12:02:24.288 10401 Delete type=2 #3303
+2023/06/02-12:02:24.288 10401 Delete type=2 #3846
+2023/06/02-12:02:24.288 10401 Delete type=2 #3692
+2023/06/02-12:02:24.288 10401 Delete type=2 #3694
+2023/06/02-12:02:24.288 10401 Delete type=2 #3302
+2023/06/02-12:02:24.288 10401 Delete type=2 #3695
+2023/06/02-12:02:24.288 10401 Delete type=2 #3693
+2023/06/02-12:02:24.288 10401 Delete type=2 #3301
+2023/06/02-12:02:24.288 10401 Delete type=2 #3870
