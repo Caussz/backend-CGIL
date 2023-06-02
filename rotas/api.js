@@ -39,7 +39,7 @@ app.get("/sigaa", async (req, res) => {
     });
     return;
   } 
-  function verifyUser(user, pass,serie) {
+  function verifyUser(user, pass, serie) {
     let status = false
     Object.keys(alunoLogin).forEach((i) => {
       if (alunoLogin[i].user === user && alunoLogin[i].pass === pass && alunoLogin[i].serie === serie) {
@@ -49,6 +49,7 @@ app.get("/sigaa", async (req, res) => {
     return status
   }
   if(!verifyUser(user, pass, serie)){
+    console.log(`entrou`)
      // Inicializa o Puppeteer, cria uma aba no navegador e a selecao de paginas
      const browser = await puppeteer.launch({ headless: false });
      const page = await browser.newPage();
@@ -284,12 +285,14 @@ app.get("/sigaa", async (req, res) => {
   
      
   } else {
+    console.log(`ta no else`)
     let result 
     Object.keys(alunoLogin).forEach((i) => {
-      if (alunoLogin[i].name === alunoCreds[i].aluno.nome ) {
+      if (alunoLogin[i].user === user) {
        result = alunoCreds[i]
       }
     })
+    console.log(result)
     return res.json(result)
   }
  

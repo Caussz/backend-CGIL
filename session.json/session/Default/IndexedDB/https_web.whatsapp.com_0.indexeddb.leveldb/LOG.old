@@ -1,3 +1,3 @@
-2023/06/01-16:29:39.225 cfd7 Reusing MANIFEST /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/06/01-16:29:39.226 cfd7 Recovering log #2272
-2023/06/01-16:29:39.236 cfd7 Reusing old log /home/caussz/backend-CGIL/session.json/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/002272.log 
+2023/06/01-21:31:18.759 21c Reusing MANIFEST C:\node\backend-CGIL\session.json\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/01-21:31:18.761 21c Recovering log #2335
+2023/06/01-21:31:18.957 21c Reusing old log C:\node\backend-CGIL\session.json\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/002335.log 
